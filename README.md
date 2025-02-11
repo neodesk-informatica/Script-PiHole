@@ -34,6 +34,19 @@ curl -sSL https://install.pi-hole.net | bash
 Durante a instalação, você será guiado por algumas etapas de configuração, como definir o IP do servidor e escolher as fontes de DNS.
 Como é mostrado nas imagens abaixo.
 
+![Welcome](Etapas/1.png)
+![Suport Pi-Hole](Etapas/2.png)
+![Initiating network interface](Etapas/3.png)
+![Calibrantig network interface](Etapas/4.png)
+![Ip informations](Etapas/5.png)
+![DNS](Etapas/6.png)
+![Pihole Installation](Etapas/7.png)
+![Pihole Installation](Etapas/8.png)
+![Pihole Installation](Etapas/9.png)
+![Pihole Installation](Etapas/10.png)
+![Pihole Installation](Etapas/11.png)
+![Pihole Installation](Etapas/12.png)
+
 
 ### 4. Configuração do PiHole
 
