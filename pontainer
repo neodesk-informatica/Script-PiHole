@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Verifica se o usuário é root
+if [ "$(id -u)" -ne 0 ]; then
+    echo "Este script deve ser executado como root ou com sudo!"
+    exit 1
+fi
+
+echo "Atualizando pacotes..."
+apt update && apt upgrade -y
+
+# Verifica se o Docker está instalado
+if ! command -v docker &> /dev/null; then
+    echo "Docker não encontrado. Instalando Docker..."
+    apt install -y docker.io
+    systemctl enable --now docker
+else
+    echo "Docker já está instalado."
+fi
+
+# Criando volume para o Portainer
+echo "Criando volume para o Portainer..."
+docker volume create portainer_data
+
+# Baixando e rodando o container do Portainer
+echo "Baixando e iniciando o Portainer..."
+docker run -d --name portainer \
+  -p 8000:8000 -p 9443:9443 \
+  --restart=always \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v portainer_data:/data \
+  portainer/portainer-ce:latest
+
+echo "Instalação concluída! Acesse o Portainer em:"
+echo "https://SEU_IP:9443"
